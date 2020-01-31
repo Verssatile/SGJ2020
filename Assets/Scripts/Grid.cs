@@ -45,8 +45,11 @@ public class Grid
     }
     public void GetXY(Vector3 worldPos, out int x, out int y)
     {
-        x = Mathf.FloorToInt((worldPos-gridOffset).x / cellSize);
-        y = Mathf.FloorToInt((worldPos-gridOffset).z / cellSize);
+        x = Mathf.FloorToInt((worldPos - gridOffset).x / cellSize);
+        y = Mathf.FloorToInt((worldPos - gridOffset).z / cellSize);
+        if (x < 0) x = 0;
+        if (x > 7) x = 7;
+        
     }
     public int GetValue(int x, int y)
     {

@@ -28,7 +28,7 @@ public class GridDisplay : MonoBehaviour
     void ShowMouseInGrid()
     {
         int x, y;
-        var mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f);
+        var mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y,8f);
         mousePos = mainCam.ScreenToWorldPoint(mousePos);
         mousePos.y = 0;
         grid.GetXY(mousePos,out x,out y);
