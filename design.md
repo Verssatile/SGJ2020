@@ -30,27 +30,47 @@ gakdgakgjcgjciaibkijadfgjadhbedhchbfibhjaibdgcijbkeeegaickficffk
 
 
 a
+
 b
+
 c=a(0,270,0)
+
 d=b(0,90,0)
+
 e
+
 f=b(0,270,0)
+
 g=a(0,90,0)
+
 h=b(0,180,0)
+
 i=a(0,180,0)
+
 j
+
 k=j(0,90,0)
 
-
 ┌	a
+
 ├	b
+
 └	c
+
 ┬	d
+
 ┼	e
+
 ┴	f
+
 ┐	g
+
 ┤	h
+
 ┘	i
+
 |	j
+
 ─	k
+
 
