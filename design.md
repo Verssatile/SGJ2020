@@ -1,7 +1,9 @@
-Pipedreams prototype
+**Pipedreams prototype**
+
 ![Pipedreams prototype](https://www.abandonwaredos.com/public/aban_img_screens/pipedreams-2.jpg)
 
-Control: Novation launch pad
+**Control: Novation launch pad**
+
 ![Control: Novation launch pad](https://www.thomann.de/pics/bdb/366032/10034868_800.jpg)
 
 
@@ -74,3 +76,12 @@ k=j(0,90,0)
 ─	k
 
 
+**Pipe standarts**
+
+![L pipe](/other/L.png)
+
+![I pipe](/other/I.png)
+
+![T pipe](/other/T.png)
+
+![+ pipe](/other/+.png)
