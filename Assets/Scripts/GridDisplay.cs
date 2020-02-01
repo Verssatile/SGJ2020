@@ -8,7 +8,7 @@ public class GridDisplay : MonoBehaviour
     int cols = 8;
     float cellSize = 1f;
     Vector3 offset;
-    Grid grid;
+    public Grid grid;
     Camera mainCam;
     void Start()
     {

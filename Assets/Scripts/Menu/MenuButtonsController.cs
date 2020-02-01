@@ -6,25 +6,30 @@ using UnityEngine.UI;
 
 public class MenuButtonsController : MonoBehaviour
 {
-    Button startGameButton;
-    Button highScoreButton;
+    public Button startGameButton;
+    public Button highScoreButton;
+    public Button tutorialButton;
+    public Button highScoreUIClose;
+    private HighScoreUI highScoreUI;
 
 
 
     void Start()
     {
-        startGameButton = GameObject.Find("StartGame").GetComponent<Button>();
-        highScoreButton = GameObject.Find("HighScore").GetComponent<Button>();
-
+        highScoreUI = GetComponent<HighScoreUI>();
         startGameButton.onClick.AddListener(StartGame);
-        highScoreButton.onClick.AddListener(ShowHighScore);
+        highScoreButton.onClick.AddListener(highScoreUI.ShowHighscoreUI);
+        highScoreUIClose.onClick.AddListener(highScoreUI.HideHighscoreUI);
+        tutorialButton.onClick.AddListener(ShowTutorial);
+
     }
     private void StartGame()
     {
         SceneManager.LoadScene("Game");
     }
-    private void ShowHighScore()
+    private void ShowTutorial()
     {
 
     }
+   
 }
