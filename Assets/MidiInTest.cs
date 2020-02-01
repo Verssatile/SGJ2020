@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using RtMidi.LowLevel;
+using System.Collections;
 
 sealed class MidiInTest : MonoBehaviour
 {
@@ -18,9 +19,16 @@ sealed class MidiInTest : MonoBehaviour
         if (lastX >= 0 && lastX < 8 && lastY >= 0 && lastY < 8)
         {
             character.MoveTo(grid.grid.GetWorldPosition(lastX, lastY));
+           
+        }
+    }
+    private IEnumerator RessetCoordinates()
+    {
+        yield return new WaitForSeconds(0.5f);
+        
             lastX = -1;
             lastY = -1;
-        }
+    
     }
 
     MidiProbe _probe;
@@ -54,9 +62,9 @@ sealed class MidiInTest : MonoBehaviour
                     Debug.Log($"x : {lastX}");
                 },
 
-                /* OnNoteOff = (byte channel, byte note) =>
-                    Debug.Log(string.Format("{0} [{1}] Off {2}", name, channel, note)),
-                */
+                 OnNoteOff = (byte channel, byte note) =>
+                      StartCoroutine(RessetCoordinates()),
+                
                 OnControlChange = (byte channel, byte number, byte value) => 
                 {
                     //number = value{
