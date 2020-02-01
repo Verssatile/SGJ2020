@@ -89,7 +89,7 @@ k=j(0,90,0)
 
 **Interface**
 
-
+![Interface](/other/interface.PNG)
 
 **Manometer**
 
