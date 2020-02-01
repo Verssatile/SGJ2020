@@ -111,3 +111,7 @@ Final screen +> game title scree in the menu
 ![Comix](/other/comix.jpg)
 
 
+**Room Walls**
+
+Every wall is 8 long by 3 meters high...
+
