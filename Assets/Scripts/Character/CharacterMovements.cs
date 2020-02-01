@@ -12,7 +12,7 @@ public class CharacterMovements : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
     } 
   
-    private void Move(Vector3 endPos)
+    public void MoveTo(Vector3 endPos)
     {
         nav.SetDestination(endPos);
     }
