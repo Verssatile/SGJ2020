@@ -62,7 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AnimationControllerCharacter.cs" />
     <Compile Include="Assets\Scripts\Behaviours\PipeSpawner.cs" />
+    <Compile Include="Assets\Scripts\CameraPreventFromClipping.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterMovements.cs" />
     <Compile Include="Assets\Scripts\Character\MidiInPort.cs" />
     <Compile Include="Assets\Scripts\Character\MidiInTest.cs" />

@@ -55,7 +55,7 @@ public class UserInputs : MonoBehaviour
     #endregion
 
     #region MonoBehaviour implementation
-
+    /*
     void Start()
     {
         _probe = new MidiProbe(MidiProbe.Mode.In);
@@ -79,45 +79,19 @@ public class UserInputs : MonoBehaviour
         _probe?.Dispose();
         DisposePorts();
     }
-
+    */
     #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-
-
-
-
-
-
-
-
 
     int x = 0;
     int y = 0;
     CharacterMovements character;
     public GridDisplay gridDisplay;
   
-    /*
+    
     void Update()
     {
+      
         
-        /*
         x = GetInputX();
         y = GetInputY();
         
@@ -209,5 +183,5 @@ public class UserInputs : MonoBehaviour
         else return -1;
     }
 
-    */
+    
 }
