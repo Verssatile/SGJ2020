@@ -13,9 +13,13 @@ public class PipeSpawner : MonoBehaviour
     void Start()
     {
         pipes = new List<GameObject>();
+        FillLevelWithPipes();
        
     }
+    void FillLevelWithPipes()
+    {
 
+    }
 
 
     void RotatePipe(GameObject pipe, float rotation)
