@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RtMidi;
+using UnityEngine.InputSystem;
+using Minis;
 
 public class UserInputs : MonoBehaviour
 {
@@ -8,21 +11,46 @@ public class UserInputs : MonoBehaviour
     int y = 0;
     CharacterMovements character;
     public GridDisplay gridDisplay;
+    MidiValueControl mvc;
 
     private void Start()
     {
+        #region MIDI INPUTS
+        InputSystem.onDeviceChange += (device, change) =>
+        {
+            if (change != InputDeviceChange.Added) return;
+
+            var midiDevice = device as Minis.MidiDevice;
+            if (midiDevice == null) return;
+
+            midiDevice.onWillNoteOn += (note, velocity) => {
+               
+               
+                Debug.Log($"Note number {note.noteNumber}, display name :{ note.shortDisplayName}, vel:{velocity}");
+                
+            };
+
+          
+        };
+
+
+        #endregion
+        var devices = InputDevice.all;
         character = GetComponent<CharacterMovements>();
     }
 
     void Update()
     {
+
+        /*
         x = GetInputX();
         y = GetInputY();
         
         if(CanMove())
         {
+            Debug.Log("");
             character.MoveTo(gridDisplay.grid.GetWorldPosition(x, y));
-        }
+        }*/
     }
     private bool CanMove()
     {
@@ -102,5 +130,5 @@ public class UserInputs : MonoBehaviour
         else return -1;
     }
 
-
+    
 }

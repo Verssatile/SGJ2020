@@ -6,6 +6,6 @@ public class GameExitManager : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+       // if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.Escape)) Application.Quit();
     }
 }

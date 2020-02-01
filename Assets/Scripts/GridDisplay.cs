@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridDisplay : MonoBehaviour
 {
-    int rows = 8;
+    int rows = 7;
     int cols = 8;
     float cellSize = 1f;
     Vector3 offset;
@@ -13,7 +13,7 @@ public class GridDisplay : MonoBehaviour
     void Start()
     {
         mainCam = Camera.main;
-        offset = new Vector3(-3.5f,0,-3.5f);
+        offset = new Vector3(-3f,0,-3.5f);
         grid = new Grid(cols,rows,cellSize, offset);   
     }
 }
