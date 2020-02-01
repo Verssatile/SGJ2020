@@ -12,9 +12,8 @@ public class AnimationControllerCharacter : MonoBehaviour
         anim.Play("MC_dance");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetAnimationToPlay(string animationName, bool condition)
     {
-        
+        anim.SetBool(animationName, condition);
     }
 }
