@@ -103,3 +103,11 @@ Examples
 
 ![manometer](https://i.ebayimg.com/images/g/ySgAAOSwL~hbRNwv/s-l300.jpg)
 
+
+**Comix**
+
+Final screen +> game title scree in the menu
+
+![Comix](/other/comix.jpg)
+
+
