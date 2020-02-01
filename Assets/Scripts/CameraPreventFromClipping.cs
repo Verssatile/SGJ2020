@@ -6,7 +6,7 @@ public class CameraPreventFromClipping : MonoBehaviour
 {
     private Camera mainCam;
     private Vector3 cameraStartPosition;
-    private GameObject characterHead;
+    public GameObject characterHead;
     private float distance;
 
     private void Start()

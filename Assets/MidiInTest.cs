@@ -6,6 +6,23 @@ sealed class MidiInTest : MonoBehaviour
 {
     #region Private members
 
+    public GridDisplay grid;
+
+    int lastX = 0;
+    int lastY = 0;
+
+    public CharacterMovements character;
+
+    void MoveCharToXY()
+    {
+        if (lastX >= 0 && lastX < 8 && lastY >= 0 && lastY < 8)
+        {
+            character.MoveTo(grid.grid.GetWorldPosition(lastX, lastY));
+            lastX = -1;
+            lastY = -1;
+        }
+    }
+
     MidiProbe _probe;
     List<MidiInPort> _ports = new List<MidiInPort>();
 
@@ -26,15 +43,27 @@ sealed class MidiInTest : MonoBehaviour
             Debug.Log("MIDI-in port found: " + name);
 
             _ports.Add(IsRealPort(name) ? new MidiInPort(i)
+            {
+                OnNoteOn = (byte channel, byte note, byte velocity) =>
+                //note = value
+                //Debug.Log(string.Format("NAME : {0} CHANNEL : [{1}] NOTE : On {2} VELOCITY :  ({3})", name, channel, note, velocity)),
                 {
-                    OnNoteOn = (byte channel, byte note, byte velocity) =>
-                        Debug.Log(string.Format("{0} [{1}] On {2} ({3})", name, channel, note, velocity)),
 
-                    OnNoteOff = (byte channel, byte note) =>
-                        Debug.Log(string.Format("{0} [{1}] Off {2}", name, channel, note)),
+                    lastX = note%16 ==8? note/16 : -1;
+                    MoveCharToXY();
+                    Debug.Log($"x : {lastX}");
+                },
 
-                    OnControlChange = (byte channel, byte number, byte value) =>
-                        Debug.Log(string.Format("{0} [{1}] CC {2} ({3})", name, channel, number, value))
+                /* OnNoteOff = (byte channel, byte note) =>
+                    Debug.Log(string.Format("{0} [{1}] Off {2}", name, channel, note)),
+                */
+                OnControlChange = (byte channel, byte number, byte value) => 
+                {
+                    //number = value{
+                    lastY = number-104;
+                    MoveCharToXY();
+                    Debug.Log($"y:{lastY}");
+                }
                 } : null
             );
         }
@@ -53,6 +82,7 @@ sealed class MidiInTest : MonoBehaviour
 
     void Start()
     {
+        
         _probe = new MidiProbe(MidiProbe.Mode.In);
     }
 
