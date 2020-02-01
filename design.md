@@ -85,3 +85,21 @@ k=j(0,90,0)
 ![T pipe](/other/T.png)
 
 ![+ pipe](/other/+.png)
+
+
+**Interface**
+
+
+
+**Manometer**
+
+To do: Manometer sprite + manometer needle (стрелка)
+
+Examples
+
+![manometer](https://i5.walmartimages.com/asr/0896c286-95ec-4243-b561-7654f4b58a6b_1.58021fa41e07b33232fbf4729c288ddd.jpeg)
+
+![manometer](https://i.ebayimg.com/images/g/ySgAAOSwL~hbRNwv/s-l300.jpg)
+
+![manometer](https://i.ebayimg.com/images/g/ySgAAOSwL~hbRNwv/s-l300.jpg)
+
