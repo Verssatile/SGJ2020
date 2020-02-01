@@ -6,7 +6,7 @@ Control: Novation launch pad
 
 
 
-**map
+**map**
 
 ┐┌─┬┐┌─┐
 |└┐|└┘┌┘
