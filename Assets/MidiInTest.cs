@@ -2,12 +2,12 @@ using UnityEngine;
 using System.Collections.Generic;
 using RtMidi.LowLevel;
 
-sealed class MidiOutTest : MonoBehaviour
+sealed class MidiInTest : MonoBehaviour
 {
     #region Private members
 
     MidiProbe _probe;
-    List<MidiOutPort> _ports = new List<MidiOutPort>();
+    List<MidiInPort> _ports = new List<MidiInPort>();
 
     // Does the port seem real or not?
     // This is mainly used on Linux (ALSA) to filter automatically generated
@@ -23,8 +23,20 @@ sealed class MidiOutTest : MonoBehaviour
         for (var i = 0; i < _probe.PortCount; i++)
         {
             var name = _probe.GetPortName(i);
-            Debug.Log("MIDI-out port found: " + name);
-            _ports.Add(IsRealPort(name) ? new MidiOutPort(i) : null);
+            Debug.Log("MIDI-in port found: " + name);
+
+            _ports.Add(IsRealPort(name) ? new MidiInPort(i)
+                {
+                    OnNoteOn = (byte channel, byte note, byte velocity) =>
+                        Debug.Log(string.Format("{0} [{1}] On {2} ({3})", name, channel, note, velocity)),
+
+                    OnNoteOff = (byte channel, byte note) =>
+                        Debug.Log(string.Format("{0} [{1}] Off {2}", name, channel, note)),
+
+                    OnControlChange = (byte channel, byte number, byte value) =>
+                        Debug.Log(string.Format("{0} [{1}] CC {2} ({3})", name, channel, number, value))
+                } : null
+            );
         }
     }
 
@@ -39,30 +51,9 @@ sealed class MidiOutTest : MonoBehaviour
 
     #region MonoBehaviour implementation
 
-    System.Collections.IEnumerator Start()
+    void Start()
     {
-        
-        _probe = new MidiProbe(MidiProbe.Mode.Out);
-
-        yield return new WaitForSeconds(0.1f);
-
-        // Send an all-sound-off message.
-        foreach (var port in _ports) port?.SendAllOff(0);
-
-        for (var i = 0; true; i++)
-        {
-            var note = 40 + (i % 30);
-
-            Debug.Log("MIDI Out: Note On " + note);
-            foreach (var port in _ports) port?.SendNoteOn(0, note, 100);
-
-            yield return new WaitForSeconds(0.1f);
-
-            Debug.Log("MIDI Out: Note Off " + note);
-            foreach (var port in _ports) port?.SendNoteOff(0, note);
-          
-            yield return new WaitForSeconds(0.1f);
-        }
+        _probe = new MidiProbe(MidiProbe.Mode.In);
     }
 
     void Update()
@@ -73,6 +64,9 @@ sealed class MidiOutTest : MonoBehaviour
             DisposePorts();
             ScanPorts();
         }
+
+        // Process queued messages in the opened ports.
+        foreach (var p in _ports) p?.ProcessMessages();
     }
 
     void OnDestroy()
