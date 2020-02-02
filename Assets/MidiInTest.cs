@@ -8,10 +8,11 @@ sealed class MidiInTest : MonoBehaviour
     #region Private members
 
     public GridDisplay grid;
-
+    public LeakingAreas leakingAreas;
     int lastX = 0;
     int lastY = 0;
 
+   
     CharacterMovements character;
 
     IEnumerator MoveCharToXY()
@@ -60,10 +61,18 @@ sealed class MidiInTest : MonoBehaviour
                 //Debug.Log(string.Format("NAME : {0} CHANNEL : [{1}] NOTE : On {2} VELOCITY :  ({3})", name, channel, note, velocity)),
                 {
                     int cellX,cellY;
-                NoteToCell(note, out cellX, out cellY);
-                    Debug.Log($"coords : {cellX} : {cellY}");
-                    lastX = note%16 ==8? note/16 : -1;
-                    StartCoroutine(MoveCharToXY());
+                    NoteToCell(note, out cellX, out cellY);
+
+                    if (character.CanStopLeak())
+                    {
+                        leakingAreas.StopLeakInputs(cellX, cellY);
+
+                    }
+                    else
+                    {
+                        lastX = note % 16 == 8 ? note / 16 : -1;
+                        StartCoroutine(MoveCharToXY());
+                    }
                 },
 
                  OnNoteOff = (byte channel, byte note) =>
