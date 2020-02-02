@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using RtMidi.LowLevel;
+using System.Collections;
 
 sealed class MidiOutTest : MonoBehaviour
 {
@@ -62,6 +63,28 @@ sealed class MidiOutTest : MonoBehaviour
 
             yield return new WaitForSeconds(0.1f);
         }
+    }
+    public void VisualSignal(int note)
+    {
+        StartCoroutine(SendSignal(note));
+    }
+    IEnumerator SendSignal(int note)
+    { 
+        foreach (var port in _ports) port?.SendAllOff(0);
+
+        while(true)
+        {
+            foreach (var port in _ports) port?.SendNoteOn(0, note, 70);
+            yield return new WaitForSeconds(0.1f);
+
+            Debug.Log("MIDI Out: Note Off " + note);
+            foreach (var port in _ports) port?.SendNoteOff(0, note);
+            yield return new WaitForSeconds(0.1f);
+
+        }
+
+
+
     }
 
     void Update()
