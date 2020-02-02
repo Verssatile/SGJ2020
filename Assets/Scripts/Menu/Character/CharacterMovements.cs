@@ -62,6 +62,7 @@ public class CharacterMovements : MonoBehaviour
 
             if (Vector3.Distance(transform.position, l.transform.position) < .3f)
             {
+                currentLeak = l;
                 Debug.Log(canHit);
                 canHit = true;
             }
@@ -82,6 +83,10 @@ public class CharacterMovements : MonoBehaviour
         {
             if (Vector3.Distance(l.transform.position, transform.position) <= .3f) currentLeak = l;
         }
-        if (currentLeak != null) Destroy(currentLeak);
+        if (currentLeak != null)
+        {
+            Destroy(currentLeak);
+            
+        }
     }
 }

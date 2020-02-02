@@ -32,20 +32,18 @@ public class LeakingAreas : MonoBehaviour
     }
     IEnumerator StartLeaking()
     {
+        int total = 0;
         yield return new WaitForSeconds(timeBetweenLeaks);
-        while(true)
+        while(total <10)
         {
-            if(areasWithLeakage.Count<2)
-            {
+            
                 var leakingCell =  gridDisplay.grid.GetRandomLeakingArea();
-
-               
                 
-                foreach (var l in character.leaks) Debug.Log("leak at : " + l);
-
+                
                 areasWithLeakage.Add(leakingCell);
                 Signalize(leakingCell);
-            }
+                total++;
+            
             yield return new WaitForSeconds(timeBetweenLeaks);
         }
     }
@@ -80,7 +78,16 @@ public class LeakingAreas : MonoBehaviour
     }
     IEnumerator StopHitting()
     {
-        yield return new WaitForSeconds(.2f);
+        GameObject currentLeak = null;
+        GameObject[] leaks = GameObject.FindGameObjectsWithTag("WaterVFX");
+        Debug.Log($"{leaks.Length} leaks");
+        yield return new WaitForSecondsRealtime(.2f);
         anim.SetAnimationToPlay("IsHitting", false);
+        yield return new WaitForSeconds(1.15f);
+        foreach (var l in leaks)
+        {
+            if (Vector3.Distance(l.transform.position, character.gameObject.transform.position) <= .3f) Destroy(l,3);
+        }
+        
     }
 }

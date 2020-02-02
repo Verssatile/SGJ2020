@@ -680,11 +680,6 @@ PrefabInstance:
       propertyPath: m_ReceiveShadows
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: b07c6f4b995d37c48899dfb371f274b5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5f46ec5a63471aa468ade94073ec59bd, type: 2}
     - target: {fileID: -927199367670048503, guid: b07c6f4b995d37c48899dfb371f274b5,
         type: 3}
       propertyPath: m_Name
@@ -1263,7 +1258,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 20be2b3b71771e5438b1a3bf750f4ca7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7030b97e3b706a044820e97ba7aff997, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
