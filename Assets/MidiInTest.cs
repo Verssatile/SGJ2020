@@ -12,7 +12,7 @@ sealed class MidiInTest : MonoBehaviour
     int lastX = 0;
     int lastY = 0;
 
-    public CharacterMovements character;
+    CharacterMovements character;
 
     void MoveCharToXY()
     {
@@ -90,7 +90,7 @@ sealed class MidiInTest : MonoBehaviour
 
     void Start()
     {
-        
+        character = GetComponent<CharacterMovements>();
         _probe = new MidiProbe(MidiProbe.Mode.In);
     }
 

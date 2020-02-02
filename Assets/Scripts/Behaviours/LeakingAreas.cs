@@ -10,6 +10,8 @@ public class LeakingAreas : MonoBehaviour
     public List<int> areasWithLeakage;
 
     float timeBetweenLeaks = 5f;
+
+    public GameObject waterVFX;
     
     void Start()
     {
@@ -37,6 +39,11 @@ public class LeakingAreas : MonoBehaviour
     }
     void Signalize(int leakingCell)
     {
+        GameObject go = Instantiate(waterVFX) as GameObject;
+        int x = leakingCell / 8;
+        int y = leakingCell % 8;
+        Debug.Log($"{x}, {y}");
+        go.transform.position = gridDisplay.grid.GetWorldPosition(x,y);
         Debug.Log(leakingCell.ToString());
     }
 }

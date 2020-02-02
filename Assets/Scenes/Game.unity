@@ -1058,7 +1058,7 @@ GameObject:
   - component: {fileID: 1713038788}
   - component: {fileID: 1713038789}
   m_Layer: 0
-  m_Name: AreaOnFireManager
+  m_Name: LeakingAreaManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,6 +1092,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridDisplay: {fileID: 1170891715}
   areasWithLeakage: 
+  waterVFX: {fileID: 8749181565372133906, guid: 24b5a24b628376d4ba41033a4893f39c,
+    type: 3}
 --- !u!1 &1941080021 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 6727e71400ed7cb46b9e3d8ac99ce0b5,

@@ -98,6 +98,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: pipe_01
       objectReference: {fileID: 0}
+    - target: {fileID: 954136482148289251, guid: f6e5757fb22a03a42ad36dc81178b2d1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 801697cba2400454eb8bec1a2963b025, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6e5757fb22a03a42ad36dc81178b2d1, type: 3}
 --- !u!4 &2855750033520573144 stripped
