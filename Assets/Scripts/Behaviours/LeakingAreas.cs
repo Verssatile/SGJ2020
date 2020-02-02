@@ -90,7 +90,7 @@ public class LeakingAreas : MonoBehaviour
         yield return new WaitForSeconds(1.15f);
         foreach (var l in leaks)
         {
-            if (Vector3.Distance(l.transform.position, character.gameObject.transform.position) <= .3f) Destroy(l,3);
+            if (Vector3.Distance(l.transform.position, character.gameObject.transform.position) <= .3f) Destroy(l,1.5f);
         }
         
     }

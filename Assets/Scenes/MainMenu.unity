@@ -824,6 +824,7 @@ MonoBehaviour:
   highScoreButton: {fileID: 929490195}
   tutorialButton: {fileID: 1230230500}
   highScoreUIClose: {fileID: 1260290748}
+  tutorial: {fileID: 925275415}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

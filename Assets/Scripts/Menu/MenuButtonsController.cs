@@ -12,7 +12,7 @@ public class MenuButtonsController : MonoBehaviour
     public Button highScoreUIClose;
     private HighScoreUI highScoreUI;
 
-
+    public GameObject tutorial;
 
     void Start()
     {
@@ -29,7 +29,16 @@ public class MenuButtonsController : MonoBehaviour
     }
     private void ShowTutorial()
     {
-
+        tutorial.SetActive(true);
+      
     }
-   
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            tutorial.SetActive(false);
+        }
+    }
+
 }
