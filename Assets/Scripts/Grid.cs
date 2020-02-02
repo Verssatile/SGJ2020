@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +22,13 @@ public class Grid
         this.cellSize = cellSize;
 
         gridArray = new int[rows, cols];
+        for(int i =0;i<rows;i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                gridArray[i, j] = 0;
+            }
+        }
         this.gridOffset = gridOffset;
     }
 
@@ -59,6 +67,19 @@ public class Grid
             return -1;
         }
         return gridArray[x, y];
+    }
+    public int GetRandomLeakingArea()
+    {
+        return UnityEngine.Random.Range(0,rows*cols);
+    }
+    public int ConvertFromCellToMidiNumber(int cell)
+    {
+        throw new NotImplementedException();
+    }
+    public void CellToValues(int cell, out int x, out int y)
+    {
+        x = cell % cols;
+        y = cell / rows;
     }
    
 }
