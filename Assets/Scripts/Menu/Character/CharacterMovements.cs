@@ -9,8 +9,13 @@ public class CharacterMovements : MonoBehaviour
 
     AnimationControllerCharacter anim;
 
+    public List<Vector3> leaks;
+
+    public bool canHit;
+
     void Start()
     {
+        leaks = new List<Vector3>();
         anim = GetComponent<AnimationControllerCharacter>();
         nav = GetComponent<NavMeshAgent>();
     } 
@@ -27,5 +32,28 @@ public class CharacterMovements : MonoBehaviour
         {
             anim.SetAnimationToPlay("IsRunning", false);
         }
+        foreach (var l in leaks)
+        {
+
+
+            if (Vector3.Distance(transform.position, l) < .3f)
+            {
+                leaks.Remove(l);
+                canHit = true;
+            }
+        }
     }
+    public void HitPipe()
+    {
+        if (!canHit) return;
+        anim.SetAnimationToPlay("IsHitting", true);
+        StartCoroutine("StopHitting");
+    }
+    IEnumerator StopHitting()
+    {
+        yield return new WaitForSecondsRealtime(.2f);
+        anim.SetAnimationToPlay("IsHitting", false);
+    }
+
+
 }

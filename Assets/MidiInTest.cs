@@ -14,12 +14,15 @@ sealed class MidiInTest : MonoBehaviour
 
     CharacterMovements character;
 
-    void MoveCharToXY()
-    {
-        if (lastX >= 0 && lastX < 8 && lastY >= 0 && lastY < 8)
+    IEnumerator MoveCharToXY()
+    {while (true)
         {
-            character.MoveTo(grid.grid.GetWorldPosition(lastX, lastY));
-           
+            if (lastX >= 0 && lastX < 8 && lastY >= 0 && lastY < 8)
+            {
+                character.MoveTo(grid.grid.GetWorldPosition(lastX, lastY));
+
+            }
+            yield return new WaitForSeconds(.5f);
         }
     }
     private IEnumerator RessetCoordinates()
@@ -56,10 +59,11 @@ sealed class MidiInTest : MonoBehaviour
                 //note = value
                 //Debug.Log(string.Format("NAME : {0} CHANNEL : [{1}] NOTE : On {2} VELOCITY :  ({3})", name, channel, note, velocity)),
                 {
-
+                    int cellX,cellY;
+                NoteToCell(note, out cellX, out cellY);
+                    Debug.Log($"coords : {cellX} : {cellY}");
                     lastX = note%16 ==8? note/16 : -1;
-                    MoveCharToXY();
-                    Debug.Log($"x : {lastX}");
+                    StartCoroutine(MoveCharToXY());
                 },
 
                  OnNoteOff = (byte channel, byte note) =>
@@ -69,8 +73,7 @@ sealed class MidiInTest : MonoBehaviour
                 {
                     //number = value{
                     lastY = number-104;
-                    MoveCharToXY();
-                    Debug.Log($"y:{lastY}");
+                    StartCoroutine(MoveCharToXY());
                 }
                 } : null
             );
@@ -111,6 +114,11 @@ sealed class MidiInTest : MonoBehaviour
     {
         _probe?.Dispose();
         DisposePorts();
+    }
+    void NoteToCell(int note, out int cellX, out int cellY)
+    {
+        cellX = note / 16;
+        cellY = note % 16;
     }
 
     #endregion
