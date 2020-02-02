@@ -19,10 +19,13 @@ public class LeakingAreas : MonoBehaviour
 
     public AnimationControllerCharacter anim;
 
+    MidiOutTest output;
+
     AudioSource hitSound;
     
     void Start()
     {
+        output = GetComponent<MidiOutTest>();
         hitSound = GetComponent<AudioSource>();
         hitSound.playOnAwake = false;
         hitSound.loop = false;
@@ -57,6 +60,7 @@ public class LeakingAreas : MonoBehaviour
         GameObject go = Instantiate(waterVFX) as GameObject;
         int x = leakingCell / 8;
         int y = leakingCell % 8;
+        output.VisualSignal((x*16+y), go);
         RequiredInputs.Add(x);
         RequiredInputs.Add(y);
         Debug.Log($"{x}, {y}");

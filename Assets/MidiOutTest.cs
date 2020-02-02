@@ -49,35 +49,21 @@ sealed class MidiOutTest : MonoBehaviour
         // Send an all-sound-off message.
         foreach (var port in _ports) port?.SendAllOff(0);
 
-        for (var i = 0; true; i++)
-        {
-            var note = 40 + (i % 30);
-
-            Debug.Log("MIDI Out: Note On " + note);
-            foreach (var port in _ports) port?.SendNoteOn(0, note, 100);
-
-            yield return new WaitForSeconds(0.1f);
-
-            Debug.Log("MIDI Out: Note Off " + note);
-            foreach (var port in _ports) port?.SendNoteOff(0, note);
-
-            yield return new WaitForSeconds(0.1f);
-        }
+      
     }
-    public void VisualSignal(int note)
+    public void VisualSignal(int note, GameObject leak)
     {
-        StartCoroutine(SendSignal(note));
+        StartCoroutine(SendSignal(note, leak));
     }
-    IEnumerator SendSignal(int note)
+    IEnumerator SendSignal(int note, GameObject leak)
     { 
         foreach (var port in _ports) port?.SendAllOff(0);
 
         while(true)
         {
             foreach (var port in _ports) port?.SendNoteOn(0, note, 70);
-            yield return new WaitForSeconds(0.1f);
+            while(leak != null) yield return new WaitForSeconds(0.1f);
 
-            Debug.Log("MIDI Out: Note Off " + note);
             foreach (var port in _ports) port?.SendNoteOff(0, note);
             yield return new WaitForSeconds(0.1f);
 

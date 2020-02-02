@@ -67,6 +67,7 @@
     <Compile Include="Assets\MidiOutPort.cs" />
     <Compile Include="Assets\MidiOutTest.cs" />
     <Compile Include="Assets\MidiProbe.cs" />
+    <Compile Include="Assets\RandomSoundManager.cs" />
     <Compile Include="Assets\Scripts\AnimationControllerCharacter.cs" />
     <Compile Include="Assets\Scripts\Behaviours\LeakingAreas.cs" />
     <Compile Include="Assets\Scripts\Behaviours\PipeSpawner.cs" />

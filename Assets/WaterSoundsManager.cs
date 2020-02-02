@@ -11,6 +11,7 @@ public class WaterSoundsManager : MonoBehaviour
         waterStream = GetComponent<AudioSource>();
         waterStream.Play();
         waterStream.loop = true;
+        waterStream.volume = .2f;
     }
 
     // Update is called once per frame

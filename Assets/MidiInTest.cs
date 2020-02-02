@@ -12,6 +12,8 @@ sealed class MidiInTest : MonoBehaviour
     int lastX = 0;
     int lastY = 0;
 
+    RandomSoundManager soundManager;
+
    
     CharacterMovements character;
 
@@ -21,7 +23,7 @@ sealed class MidiInTest : MonoBehaviour
             if (lastX >= 0 && lastX < 8 && lastY >= 0 && lastY < 8)
             {
                 character.MoveTo(grid.grid.GetWorldPosition(lastX, lastY));
-
+                soundManager.PlayRandomSound();
             }
             yield return new WaitForSeconds(.5f);
         }
@@ -102,6 +104,7 @@ sealed class MidiInTest : MonoBehaviour
 
     void Start()
     {
+        soundManager = GameObject.Find("RandomSoundManager").GetComponent<RandomSoundManager>();
         character = GetComponent<CharacterMovements>();
         _probe = new MidiProbe(MidiProbe.Mode.In);
     }
