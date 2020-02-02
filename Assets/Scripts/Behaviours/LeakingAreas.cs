@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaOnFireManager : MonoBehaviour
+public class LeakingAreas : MonoBehaviour
 {
 
     public GridDisplay gridDisplay;
@@ -23,9 +23,10 @@ public class AreaOnFireManager : MonoBehaviour
         {
             if(areasWithLeakage.Count<2)
             {
-                var la =  gridDisplay.grid.GetRandomLeakingArea();
-                Debug.Log("leaking area "+la);
-                areasWithLeakage.Add(gridDisplay.grid.GetRandomLeakingArea());
+                var leakingCell =  gridDisplay.grid.GetRandomLeakingArea();
+                Debug.Log("leaking area "+leakingCell);
+                areasWithLeakage.Add(leakingCell);
+                Signalize(leakingCell);
             }
             yield return new WaitForSeconds(timeBetweenLeaks);
         }
@@ -33,5 +34,9 @@ public class AreaOnFireManager : MonoBehaviour
     public void StopLeakage(int cell)
     {
         areasWithLeakage.Remove(cell);
+    }
+    void Signalize(int leakingCell)
+    {
+        Debug.Log(leakingCell.ToString());
     }
 }

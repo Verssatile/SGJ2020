@@ -68,7 +68,7 @@
     <Compile Include="Assets\MidiOutTest.cs" />
     <Compile Include="Assets\MidiProbe.cs" />
     <Compile Include="Assets\Scripts\AnimationControllerCharacter.cs" />
-    <Compile Include="Assets\Scripts\Behaviours\AreaOnFireManager.cs" />
+    <Compile Include="Assets\Scripts\Behaviours\LeakingAreas.cs" />
     <Compile Include="Assets\Scripts\Behaviours\PipeSpawner.cs" />
     <Compile Include="Assets\Scripts\CameraPreventFromClipping.cs" />
     <Compile Include="Assets\Scripts\GameExitManager.cs" />

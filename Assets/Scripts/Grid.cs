@@ -34,7 +34,11 @@ public class Grid
 
     public Vector3 GetWorldPosition(int row, int col)
     {
-        return new Vector3((7-row*cellSize),0,col*cellSize) + gridOffset;
+        return new Vector3(row,0,col)*cellSize + gridOffset;
+    }
+    public Vector3 GetWorldPositionPipe(int row, int col)
+    {
+        return new Vector3((7 - row * cellSize), 0, col * cellSize) + gridOffset;
     }
     public void SetValue(int x, int y, int value)
     {

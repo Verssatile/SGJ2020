@@ -1056,6 +1056,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1713038788}
+  - component: {fileID: 1713038789}
   m_Layer: 0
   m_Name: AreaOnFireManager
   m_TagString: Untagged
@@ -1077,6 +1078,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1713038789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713038787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6716be23e64c3f24194180b842e1c106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridDisplay: {fileID: 1170891715}
+  areasWithLeakage: 
 --- !u!1 &1941080021 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 6727e71400ed7cb46b9e3d8ac99ce0b5,
